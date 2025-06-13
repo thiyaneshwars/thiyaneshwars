@@ -45,7 +45,7 @@
 
 ---
 
-⭐ **Fun Fact**: Passionate about blending AI, Ethical Hacking, Automation, and solving real-world problems 🚀
+⭐ **Fun Fact**: Passionate about blending AI,  Automation, and solving real-world problems 🚀
 
 ---
 
