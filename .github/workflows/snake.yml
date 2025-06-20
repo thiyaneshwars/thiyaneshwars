@@ -2,37 +2,24 @@ name: Generate Snake Animation
 
 on:
   schedule:
-    # Runs every 6 hours
+    # every 6 hours
     - cron: "0 */6 * * *"
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   generate:
-    # Grant permissions for the job to write to the repository.
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
-      # This step checks out a copy of your repository.
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Generates the snake animation SVG
-      - name: Generate Snake animation
-        uses: Platane/snk@v3
+      - uses: Platane/snk@v3
+        id: snake-gif
         with:
-          github_user_name: ${{ github.repository_owner }} # Use the repository owner's name dynamically
+          github_user_name: thiyaneshwar
           outputs: |
             dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      # Pushes the generated SVG to the output branch
-      - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+      - uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
         env:
-          # The GITHUB_TOKEN is required for the action to push to the repository.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
